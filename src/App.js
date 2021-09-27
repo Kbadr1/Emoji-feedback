@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { AppContainer, Header, Reactions, Button } from "./styles/app.styles";
+import Emojis from "./components/Emojis";
 
 function App() {
+  const [chosen, setChosen] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <AppContainer>
+      <Reactions>
+        <Header>How was your experience?</Header>
+        <Emojis chosen={chosen} setChosen={setChosen} />
+        <Button
+          backgroundColor={chosen >= 0 ? `rgb(0, 0, 0)` : `rgb(0, 0, 0, 0.25)`}
+          cursor={chosen >= 0 ? `pointer` : `not-allowed`}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Submit
+        </Button>
+      </Reactions>
+    </AppContainer>
   );
 }
 
